@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1 {
+        color: rgb(238, 92, 92);
+        text-shadow: 3px 3px black;
+      }
+      .displayname {
+        width: 60%;
+        color: rgb(7, 8, 8);
+        font-size: 1.5em;
+        /* background-color: red; */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Countries Names Form EARTH.</h1>
+    <div class="displayname">
+      hello
+      <ul></ul>
+    </div>
+
+    <script>
+      const url = "https://restcountries.com/v3.1/all";
+      const fetchData = async () => {
+        try {
+          const data = await fetch(url);
+          const res_data = await data.json();
+          const countryName = [];
+          for (country of res_data) {
+            countryName.push(country.name.common);
+          }
+          // console.log(countryName);
+          return countryName;
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchData();
+      async function displayCountry() {
+        const CountryName = await fetchData();
+        console.log(CountryName);
+      }
+      displayCountry();
+    </script>
+  </body>
+</html>

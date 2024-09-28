@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Promises
+      //   let myPromises = new Promise((success, reject) => {
+      //     setTimeout(() => {
+      //       success("hello world");
+      //     }, 2000);
+      //   });
+      //   myPromises
+      //     .then((data) => {
+      //       console.log(data);
+      //     })
+      //     .catch((err) => {
+      //       console.log(error);
+      //     });
+      //   console.log("hi");
+
+      const url = "https://jsonplaceholder.typicode.com/posts";
+      const dataFetch = async () => {
+        try {
+          const data = await fetch(url);
+          const res_data = await data.json();
+          //   const bodyData = res_data[0].body;
+          //   document.write(bodyData);
+          res_data.forEach((post) => {
+            document.write(post.body + "<br>");
+          });
+        } catch (error) {
+          console.log("error");
+        }
+      };
+      dataFetch();
+    </script>
+  </body>
+</html>

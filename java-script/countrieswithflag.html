@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      .countrybox {
+        width: 100vw;
+        height: 100vh;
+        box-sizing: border-box;
+        background-color: aqua;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        gap: 2rem;
+        overflow: scroll;
+      }
+      .country {
+        height: 30%;
+        width: 22%;
+        font-size: 0.8em;
+        box-sizing: border-box;
+        background-color: antiquewhite;
+      }
+      .flag {
+        height: 85%;
+        width: 100%;
+        background-color: aquamarine;
+      }
+      .flag img {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="countrybox" id="countryBox">
+      <!-- <div class="country">
+        <div class="flag"></div>
+      </div> -->
+    </div>
+
+    <script>
+      const url = "https://restcountries.com/v3.1/all";
+      document.addEventListener("DOMContentLoaded", function () {
+        const fetchData = async () => {
+          try {
+            const response = await fetch(url);
+            const countryInfo = [];
+            if (!response) {
+              console.log("Error have been occur in the process of fetching");
+              return null;
+            }
+            console.log("FINE..");
+            const data = await response.json();
+            return data;
+          } catch (error) {
+            console.log(error);
+            return null;
+          }
+        };
+        fetchData();
+        async function displayCountry() {
+          const data = await fetchData();
+          if (data) {
+            data.forEach((item) => {
+              const country = document.createElement("div");
+              country.classList.add("country");
+
+              const flag = document.createElement("div");
+              flag.classList.add("flag");
+              flag.innerHTML = `<img src="${item.flags.png}" alt="img not found">`;
+              // flag.classList.add("images");
+
+              const countryName = document.createElement("span");
+              countryName.textContent = item.name.common;
+
+              country.appendChild(flag);
+              country.appendChild(countryName);
+              document.getElementById("countryBox").appendChild(country);
+            });
+          }
+        }
+
+        displayCountry();
+      });
+    </script>
+  </body>
+</html>

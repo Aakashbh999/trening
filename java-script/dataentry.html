@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* * {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        } */
+      .entrybox {
+        border: 3px solid black;
+        height: 70vh;
+        width: 75vw;
+        box-sizing: border-box;
+      }
+      .hobbies {
+        height: 60%;
+        width: 60%;
+        /* background-color: aliceblue; */
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="entrybox">
+      <h3>Please,Enter Your Hobbies</h3>
+      <div class="hobbies" id="hobbies">
+        <ol type="1" id="hobbylist"></ol>
+      </div>
+      <div class="entry">
+        <label for="">Enter Hobby: </label>
+        <input
+          type="text"
+          id="enterhobbies"
+          placeholder="TO ADD & REPLACE HOBBY"
+        />
+        <button onclick="addHobbies()">ADD</button>
+
+        <br />
+        <label for="">Enter Index No: </label>
+        <input
+          type="number"
+          id="removehobbies"
+          placeholder="TO REMOVE & REPLACE HOBBY"
+        />
+        <button onclick="removeHobbies()">REMOVE</button>
+        <button onclick="replaceHobbies()">REPLACE</button>
+      </div>
+    </div>
+
+    <script>
+      function addHobbies() {
+        // e.preventDefault();
+        let enterHobbies = document.getElementById("enterhobbies").value;
+        console.log(enterHobbies);
+        let hobbyList = document.getElementById("hobbylist");
+        if (enterHobbies === "") {
+          alert("Can't enter a empty Hobby!");
+        } else {
+          let newHobbie = document.createElement("li");
+          newHobbie.textContent = enterHobbies;
+          hobbyList.appendChild(newHobbie);
+          document.getElementById("enterhobbies").value = "";
+        }
+      }
+
+      function removeHobbies() {
+        const remove = document.getElementById("removehobbies").value;
+        let hobbyList = document.getElementById("hobbylist");
+        let items = hobbyList.children;
+        if (remove <= 0 || remove > items.length) {
+          alert("Enter valid Index ");
+          // console.log("hi");
+        } else if (remove === "") {
+          alert("Please,Enter the Valid index no you want to delete");
+        } else {
+          hobbyList.removeChild(hobbyList.children[remove - 1]);
+          document.getElementById("removehobbies").value = "";
+        }
+      }
+
+      function replaceHobbies() {
+        const enterHobbies = document.getElementById("enterhobbies").value;
+        const remove = document.getElementById("removehobbies").value;
+        let hobbyList = document.getElementById("hobbylist");
+        let newHobbie = document.createElement("li");
+        newHobbie.textContent = enterHobbies;
+        if (enterHobbies === "" || remove === "") {
+          alert(" Hobby or Index is not valid");
+        } else {
+          hobbyList.replaceChild(newHobbie, hobbyList.children[remove - 1]);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        height: 100vh;
+        width: 100vw;
+        background-color: aliceblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .watchbox {
+        height: 60%;
+        width: auto;
+        position: relative;
+        display: flex;
+        /* align-items: center; */
+        /* background-color: aqua; */
+        /* display: flex; */
+      }
+      .watchbox img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+        z-index: 2;
+      }
+      .screen {
+        height: 59%;
+        width: 59%;
+        top: 11%;
+        left: 1.5%;
+        /* padding: 5px; */
+        border-radius: 50%;
+        object-fit: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: skew(-15deg);
+        /* transform: rotate(0deg);  */
+        /* scale: 4rem; */
+        z-index: 1;
+        background-color: rgb(142, 135, 135);
+        position: absolute;
+        border: 2px solid black;
+      }
+      .screen span {
+        color: rgb(202, 54, 54);
+        position: absolute;
+        inset: 16px;
+        /* margin: 5px; */
+        transform: rotate(calc(30deg * var(--i)));
+        text-align: center;
+      }
+      span i {
+        transform: rotate(calc(-30deg * var(--j)));
+        display: inline-block;
+        font-size: 1em;
+        font-style: normal;
+        text-shadow: 1px 1px 0px rgb(0 0 0 / 25%);
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="watchbox">
+        <!-- <div class="watch"> -->
+        <img src="analogwatch.png" alt="" />
+        <div class="screen">
+          <span style="--i: 1; --j: 0"><i>|</i></span>
+          <span style="--i: 2; --j: 0"><i>|</i></span>
+          <span style="--i: 3; --j: 3"><i>3</i></span>
+          <span style="--i: 4; --j: 0"><i>|</i></span>
+          <span style="--i: 5; --j: 0"><i>|</i></span>
+          <span style="--i: 6; --j: 6"><i>6</i></span>
+          <span style="--i: 7; --j: 0"><i>|</i></span>
+          <span style="--i: 8; --j: 0"><i>|</i></span>
+          <span style="--i: 9; --j: 9"><i>9</i></span>
+          <span style="--i: 10; --j: 0"><i>|</i></span>
+          <span style="--i: 11; --j: 0"><i>|</i></span>
+          <span style="--i: 12; --j: 12"><i>12</i></span>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <script></script>
+  </body>
+</html>

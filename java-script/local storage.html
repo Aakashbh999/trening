@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./local storage.css" />
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <!-- <input type="text" id="inputkey" placeholder="key varible" />
+    <input type="text" id="inputdata" placeholder="data" /> -->
+
+    <!-- <button onclick="submit()">submit</button> -->
+    <div class="counterbox">
+      <button class="bton" id="increment" onclick="handleIncrement()">+</button>
+
+      <div class="display">
+        <input type="text" id="result" value="3" readonly />
+      </div>
+      <button class="bton" id="decrement" onclick="handleDecrement()">-</button>
+    </div>
+
+    <script>
+      // function submit() {
+      //   const key = document.getElementById("inputkey").value;
+      //   const data = document.getElementById("inputdata").value;
+      //   if (key === "" || data === "") {
+      //     alert("can't accept empty!");
+      //   } else {
+      //     localStorage.setItem(key, data);
+      //     location.reload();
+      //   }
+      //   const get = localStorage.getItem(data);
+      //   document.write(get);
+      // }
+      // const data = localStorage.getItem("01");
+      // document.write(data);
+
+      // for CONTER
+
+      // function handleIncrement() {
+      //   let count = document.getElementById("result").value;
+      //   let countNumber = parseInt(count, 10);
+      //   localStorage.setItem("001", countNumber);
+      //   let add = parseInt(localStorage.getItem("001"), 10);
+      //   countNumber = add + 1;
+      //   localStorage.setItem("001", countNumber);
+      //   document.getElementById("result").value = countNumber;
+      //   console.log(countNumber);
+      // }
+      // function handleDecrement() {
+      //   let count = document.getElementById("result").value;
+      //   let countNumber = parseInt(count, 10);
+      //   localStorage.setItem("001", countNumber);
+      //   let minus = parseInt(localStorage.getItem("001"), 10);
+      //   countNumber = minus - 1;
+      //   localStorage.setItem("001", countNumber);
+      //   document.getElementById("result").value = countNumber;
+      //   console.log(countNumber);
+      // }
+      //LEARN TO MAKE CODE MORE EFFICIENT
+
+      function updateValue(operation) {
+        let count = document.getElementById("result").value;
+        let countNumber = parseInt(count, 10);
+        console.log(count);
+        localStorage.setItem("001", countNumber);
+        let localNum = parseInt(localStorage.getItem("001"), 10);
+        if (operation === "+") {
+          countNumber = localNum + 1;
+        } else if (operation === "-") {
+          countNumber = localNum - 1;
+        }
+        localStorage.setItem("001", countNumber);
+        document.getElementById("result").value = countNumber;
+      }
+      function handleIncrement() {
+        updateValue("+");
+      }
+      function handleDecrement() {
+        updateValue("-");
+      }
+    </script>
+  </body>
+</html>
